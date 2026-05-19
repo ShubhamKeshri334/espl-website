@@ -147,6 +147,10 @@
       border-bottom-color: #E2E8F0;
       box-shadow: 0 2px 4px rgba(0,0,0,0.06);
     }
+    #nav-logo {
+      filter: brightness(5);
+      transition: filter 0.3s ease;
+    }
     #navbar.scrolled #nav-logo {
       filter: brightness(0) saturate(100%) invert(18%) sepia(74%) saturate(700%) hue-rotate(200deg) brightness(85%);
     }
@@ -325,7 +329,7 @@
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3 shrink-0">
         <img id="nav-logo" src="Brand_Assets/Logo_transparent.png" alt="Envirostruct Solutions Pvt Ltd — NABL Accredited Lab Ranchi"
-             class="h-12 w-auto object-contain" style="filter: brightness(5); transition: filter 0.3s ease;" />
+             class="h-12 w-auto object-contain" />
       </a>
 
       <!-- Desktop nav -->
