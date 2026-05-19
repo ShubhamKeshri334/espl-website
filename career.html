@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=yes" />
+  <title>Careers | Envirostruct Solutions Pvt Ltd — NABL Environmental Testing Lab, Ranchi</title>
+  <meta name="description" content="Join Envirostruct Solutions Pvt Ltd — NABL accredited environmental testing lab in Ranchi, Jharkhand. Send your resume and grow your career in environmental science." />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="IN-JH" />
+  <meta name="geo.placename" content="Ranchi, Jharkhand, India" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:title" content="Careers | Envirostruct Solutions Pvt Ltd" />
+  <meta property="og:description" content="Join our team at Envirostruct Solutions — NABL accredited environmental testing laboratory in Ranchi." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:   { DEFAULT: '#1E3A8A', hover: '#264191', light: '#EEF2FF' },
+            teal:      { DEFAULT: '#0D9488', light: '#CCFBF1', dark: '#0F766E' },
+            surface:   { DEFAULT: '#F7F9FB', white: '#FFFFFF', dim: '#ECEEF0' },
+            ink:       { DEFAULT: '#191C1E', muted: '#444651', faint: '#757682' },
+            outline:   { DEFAULT: '#E2E8F0', strong: '#C5C5D3' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          boxShadow: { 'card': '0 2px 4px rgba(0,0,0,0.05)', 'card-hover': '0 4px 16px rgba(30,58,138,0.14)' },
+          borderRadius: { DEFAULT: '4px', md: '6px', lg: '8px', xl: '12px', full: '9999px' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #E8EEF5; color: #191C1E; }
+
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+    .nav-link {
+      font-size: 14px; font-weight: 500; color: #444651;
+      text-decoration: none; padding: 6px 2px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-link:hover { color: #1E3A8A; border-bottom-color: #1E3A8A; }
+    .nav-link.active { color: #1E3A8A; border-bottom-color: #1E3A8A; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1E3A8A; color: #fff; font-weight: 600; font-size: 14px;
+      padding: 11px 24px; border-radius: 4px; border: none; cursor: pointer;
+      text-decoration: none; transition: background 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { background: #264191; box-shadow: 0 4px 12px rgba(30,58,138,0.25); }
+
+    .nabl-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #0D9488; color: #fff;
+      border-radius: 9999px; padding: 6px 16px 6px 10px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.05em;
+    }
+
+    .section-label {
+      font-size: 12px; font-weight: 500; letter-spacing: 0.05em;
+      text-transform: uppercase; color: #0D9488; margin-bottom: 12px;
+    }
+    .section-heading {
+      font-size: 32px; font-weight: 700; color: #191C1E;
+      letter-spacing: -0.02em; line-height: 1.2;
+    }
+
+    .form-input {
+      width: 100%; padding: 10px 14px; font-size: 14px; color: #191C1E;
+      background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 4px;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .form-input:focus {
+      border-color: #1E3A8A;
+      box-shadow: 0 0 0 3px rgba(30,58,138,0.12);
+    }
+    .form-input::placeholder { color: #9CA3AF; }
+    select.form-input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23757682' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+    #mobile-menu {
+      display: none; position: fixed; inset: 0; top: 0; z-index: 99;
+      background: #FFFFFF; padding: 80px 24px 32px;
+      flex-direction: column; gap: 4px; overflow-y: auto;
+    }
+    #mobile-menu.open { display: flex; }
+    .mobile-nav-link {
+      font-size: 16px; font-weight: 500; color: #444651; text-decoration: none;
+      padding: 12px 16px; border-radius: 6px; transition: background 0.15s, color 0.15s;
+    }
+    .mobile-nav-link:hover { background: #EEF2FF; color: #1E3A8A; }
+    .mobile-nav-link.active { background: #EEF2FF; color: #1E3A8A; }
+
+    .nav-cta {
+      background: #1E3A8A; color: #fff; border: none;
+      font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: 4px;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #264191; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .perk-card {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px;
+      padding: 28px 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .perk-card:hover { border-color: #0D9488; box-shadow: 0 4px 16px rgba(13,148,136,0.10); }
+
+    .role-card {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px;
+      padding: 24px 28px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    }
+    .role-card:hover { border-color: #1E3A8A; box-shadow: 0 4px 16px rgba(30,58,138,0.10); }
+
+    .role-tag {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 9999px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════ -->
+<nav id="navbar" class="w-full">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <img src="Brand_Assets/Logo_transparent.png" alt="Envirostruct Solutions Pvt Ltd"
+             class="h-12 w-auto object-contain" style="filter: brightness(0) saturate(100%) invert(18%) sepia(74%) saturate(700%) hue-rotate(200deg) brightness(85%);" />
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html"    class="nav-link">Home</a>
+        <a href="about.html"    class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="gallery.html"  class="nav-link">Lab &amp; Equipment</a>
+        <a href="career.html"   class="nav-link active">Careers</a>
+        <a href="contact.html"  class="nav-link">Contact</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="contact.html" class="nav-cta">Get a Quote</a>
+      </div>
+      <button id="hamburger" class="md:hidden flex flex-col gap-[6px] p-2 -mr-2" aria-label="Menu">
+        <span id="h1" style="display:block;width:22px;height:2px;background:#191C1E;border-radius:2px;transition:transform 0.25s,opacity 0.25s;"></span>
+        <span id="h2" style="display:block;width:22px;height:2px;background:#191C1E;border-radius:2px;transition:opacity 0.25s;"></span>
+        <span id="h3" style="display:block;width:22px;height:2px;background:#191C1E;border-radius:2px;transition:transform 0.25s;"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobile-menu">
+  <a href="index.html"    class="mobile-nav-link">Home</a>
+  <a href="about.html"    class="mobile-nav-link">About</a>
+  <a href="services.html" class="mobile-nav-link">Services</a>
+  <a href="gallery.html"  class="mobile-nav-link">Lab &amp; Equipment</a>
+  <a href="career.html"   class="mobile-nav-link active">Careers</a>
+  <a href="contact.html"  class="mobile-nav-link">Contact</a>
+  <a href="contact.html"  class="btn-primary mt-4 justify-center">Get a Quote</a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE BANNER
+═══════════════════════════════════════════════ -->
+<section style="background:#1E3A8A;padding-top:80px;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:13px;color:rgba(255,255,255,0.5);">
+      <a href="index.html" style="color:rgba(255,255,255,0.5);text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Home</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      <span style="color:rgba(255,255,255,0.85);">Careers</span>
+    </div>
+    <h1 style="font-size:clamp(28px,4vw,44px);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.15;margin-bottom:14px;">
+      Join Our Team
+    </h1>
+    <p style="font-size:16px;color:rgba(255,255,255,0.65);max-width:560px;line-height:1.7;">
+      We're looking for curious, driven people who care about environmental accuracy. If that's you, we'd love to hear from you.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     WHY JOIN ESPL
+═══════════════════════════════════════════════ -->
+<section style="background:#fff;padding:72px 0;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label">Why Work With Us</div>
+      <h2 class="section-heading">A lab that takes its work seriously</h2>
+      <p style="margin-top:12px;font-size:15px;color:#757682;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75;">
+        ESPL is a young, growing lab with big ambitions. You'll work on real problems, with real equipment, and see the direct impact of your work on environmental compliance across Jharkhand.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Perk 1 -->
+      <div class="perk-card reveal">
+        <div style="width:44px;height:44px;border-radius:10px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div style="font-size:16px;font-weight:600;color:#191C1E;margin-bottom:8px;">NABL Accredited Environment</div>
+        <p style="font-size:14px;color:#757682;line-height:1.75;">Work in a nationally recognised, accredited laboratory where every result is held to the highest standards.</p>
+      </div>
+
+      <!-- Perk 2 -->
+      <div class="perk-card reveal" style="transition-delay:0.08s;">
+        <div style="width:44px;height:44px;border-radius:10px;background:#CCFBF1;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div style="font-size:16px;font-weight:600;color:#191C1E;margin-bottom:8px;">Hands-On Technical Work</div>
+        <p style="font-size:14px;color:#757682;line-height:1.75;">Get direct exposure to field sampling, laboratory analysis, and modern testing instruments — no desk job.</p>
+      </div>
+
+      <!-- Perk 3 -->
+      <div class="perk-card reveal" style="transition-delay:0.16s;">
+        <div style="width:44px;height:44px;border-radius:10px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div style="font-size:16px;font-weight:600;color:#191C1E;margin-bottom:8px;">Small Team, Big Impact</div>
+        <p style="font-size:14px;color:#757682;line-height:1.75;">Be part of a close-knit team where your contributions are visible, valued, and directly shape how the lab grows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     OPEN POSITIONS
+═══════════════════════════════════════════════ -->
+<section style="background:#E8EEF5;padding:72px 0;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div style="margin-bottom:40px;">
+      <div class="section-label">Open Positions</div>
+      <h2 class="section-heading">Current Openings</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Role 1 -->
+      <div class="role-card reveal">
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px;">
+            <h3 style="font-size:17px;font-weight:700;color:#191C1E;margin:0;">Lab Technician – Environmental Testing</h3>
+            <span class="role-tag" style="background:#EEF2FF;color:#1E3A8A;">Full-time</span>
+            <span class="role-tag" style="background:#CCFBF1;color:#0F766E;">On-site · Ranchi</span>
+          </div>
+          <p style="font-size:14px;color:#757682;line-height:1.75;margin:0;">
+            Perform analysis of water, air, soil, and noise samples as per NABL protocols. Operate instruments, maintain records, and support field sampling activities.
+          </p>
+          <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:12px;color:#444651;background:#F1F5F9;padding:4px 10px;border-radius:4px;">B.Sc / B.Tech (Environment / Chemistry)</span>
+            <span style="font-size:12px;color:#444651;background:#F1F5F9;padding:4px 10px;border-radius:4px;">0–3 years experience</span>
+          </div>
+        </div>
+        <a href="#apply" style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:#1E3A8A;color:#fff;font-size:13px;font-weight:600;padding:9px 18px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#264191'" onmouseout="this.style.background='#1E3A8A'">
+          Apply Now
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Role 2 -->
+      <div class="role-card reveal" style="transition-delay:0.08s;">
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px;">
+            <h3 style="font-size:17px;font-weight:700;color:#191C1E;margin:0;">Field Sampling Officer</h3>
+            <span class="role-tag" style="background:#EEF2FF;color:#1E3A8A;">Full-time</span>
+            <span class="role-tag" style="background:#CCFBF1;color:#0F766E;">Field + Ranchi</span>
+          </div>
+          <p style="font-size:14px;color:#757682;line-height:1.75;margin:0;">
+            Conduct on-site sample collection for ambient air, stack emissions, water bodies, and soil. Coordinate with clients and ensure proper sample preservation and chain-of-custody documentation.
+          </p>
+          <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:12px;color:#444651;background:#F1F5F9;padding:4px 10px;border-radius:4px;">B.Tech / Diploma (Civil / Environment)</span>
+            <span style="font-size:12px;color:#444651;background:#F1F5F9;padding:4px 10px;border-radius:4px;">Willing to travel</span>
+          </div>
+        </div>
+        <a href="#apply" style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:#1E3A8A;color:#fff;font-size:13px;font-weight:600;padding:9px 18px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#264191'" onmouseout="this.style.background='#1E3A8A'">
+          Apply Now
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Role 3 -->
+      <div class="role-card reveal" style="transition-delay:0.16s;">
+        <div style="flex:1;min-width:0;">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px;">
+            <h3 style="font-size:17px;font-weight:700;color:#191C1E;margin:0;">Environmental Analyst / Report Writer</h3>
+            <span class="role-tag" style="background:#EEF2FF;color:#1E3A8A;">Full-time</span>
+            <span class="role-tag" style="background:#CCFBF1;color:#0F766E;">On-site · Ranchi</span>
+          </div>
+          <p style="font-size:14px;color:#757682;line-height:1.75;margin:0;">
+            Interpret laboratory data, prepare test reports in compliance with NABL guidelines, and liaise with clients for report delivery. Knowledge of PCB/CPCB standards is preferred.
+          </p>
+          <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:12px;color:#444651;background:#F1F5F9;padding:4px 10px;border-radius:4px;">M.Sc / M.Tech (Environment)</span>
+            <span style="font-size:12px;color:#444651;background:#F1F5F9;padding:4px 10px;border-radius:4px;">1–4 years experience</span>
+          </div>
+        </div>
+        <a href="#apply" style="flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:#1E3A8A;color:#fff;font-size:13px;font-weight:600;padding:9px 18px;border-radius:4px;text-decoration:none;white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#264191'" onmouseout="this.style.background='#1E3A8A'">
+          Apply Now
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     APPLICATION FORM
+═══════════════════════════════════════════════ -->
+<section id="apply" style="background:#fff;padding:72px 0;">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center reveal" style="margin-bottom:48px;">
+      <div class="section-label">Send Your Application</div>
+      <h2 class="section-heading">Apply Now</h2>
+      <p style="margin-top:12px;font-size:15px;color:#757682;line-height:1.75;">
+        Fill in the form below. Your details will be sent to us via WhatsApp — please attach your resume in the chat after submitting.
+      </p>
+    </div>
+
+    <!-- Form card -->
+    <div id="career-form-wrap" class="reveal" style="background:#F7F9FB;border:1px solid #E2E8F0;border-radius:12px;padding:36px 32px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+      <form id="career-form" onsubmit="handleCareerSubmit(event)">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+          <!-- Name -->
+          <div>
+            <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#444651;margin-bottom:6px;">Full Name <span style="color:#e53e3e;">*</span></label>
+            <input id="c-name" type="text" class="form-input" placeholder="Rahul Kumar" required />
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#444651;margin-bottom:6px;">Phone <span style="color:#e53e3e;">*</span></label>
+            <input id="c-phone" type="tel" class="form-input" placeholder="+91 98765 43210" required />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#444651;margin-bottom:6px;">Email Address <span style="color:#e53e3e;">*</span></label>
+            <input id="c-email" type="email" class="form-input" placeholder="rahul@email.com" required />
+          </div>
+
+          <!-- Position -->
+          <div>
+            <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#444651;margin-bottom:6px;">Position Applying For <span style="color:#e53e3e;">*</span></label>
+            <select id="c-position" class="form-input" required>
+              <option value="">Select a position</option>
+              <option>Lab Technician – Environmental Testing</option>
+              <option>Field Sampling Officer</option>
+              <option>Environmental Analyst / Report Writer</option>
+              <option>Other / General Application</option>
+            </select>
+          </div>
+
+          <!-- Experience -->
+          <div>
+            <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#444651;margin-bottom:6px;">Years of Experience</label>
+            <select id="c-experience" class="form-input">
+              <option value="">Select</option>
+              <option>Fresher (0 years)</option>
+              <option>Less than 1 year</option>
+              <option>1–2 years</option>
+              <option>3–5 years</option>
+              <option>5+ years</option>
+            </select>
+          </div>
+
+          <!-- Qualification -->
+          <div>
+            <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#444651;margin-bottom:6px;">Highest Qualification</label>
+            <input id="c-qual" type="text" class="form-input" placeholder="e.g. B.Tech Civil Engineering" />
+          </div>
+
+        </div>
+
+        <!-- Cover message -->
+        <div style="margin-top:20px;">
+          <label style="display:block;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#444651;margin-bottom:6px;">Brief Introduction</label>
+          <textarea id="c-message" class="form-input" rows="4" placeholder="Tell us a little about yourself and why you'd like to join ESPL..." style="resize:vertical;"></textarea>
+        </div>
+
+        <!-- Resume note -->
+        <div style="margin-top:16px;background:#EEF2FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 16px;display:flex;align-items:flex-start;gap:10px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <p style="font-size:13px;color:#3730A3;line-height:1.65;margin:0;">After submitting, a WhatsApp chat will open. <strong>Please attach your resume (PDF)</strong> to the message before sending.</p>
+        </div>
+
+        <!-- Submit -->
+        <div style="margin-top:24px;">
+          <button type="submit" class="btn-primary w-full justify-center" style="font-size:15px;padding:13px 24px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.07 6.07l1.06-1.06a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Send Application via WhatsApp
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Success state -->
+    <div id="career-success" style="display:none;text-align:center;padding:48px 24px;">
+      <div style="width:64px;height:64px;border-radius:50%;background:#CCFBF1;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h3 style="font-size:22px;font-weight:700;color:#191C1E;margin-bottom:8px;">Application Sent!</h3>
+      <p style="font-size:15px;color:#757682;line-height:1.75;max-width:380px;margin:0 auto 24px;">
+        Thanks for reaching out. Please attach your resume in the WhatsApp chat. We'll review your application and get back to you.
+      </p>
+      <button onclick="document.getElementById('career-form-wrap').style.display='block';document.getElementById('career-success').style.display='none';document.getElementById('career-form').reset();" style="font-size:14px;color:#1E3A8A;background:none;border:none;cursor:pointer;text-decoration:underline;">Submit another application</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer style="background:#191C1E;border-top:1px solid rgba(255,255,255,0.08);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <img src="Brand_Assets/Logo_transparent.png" alt="Envirostruct Solutions" class="h-14 w-auto object-contain mb-5" style="filter:brightness(5);" />
+        <p style="color:rgba(255,255,255,0.5);line-height:1.8;font-size:14px;max-width:340px;">
+          Envirostruct Solutions Pvt Ltd — NABL Accredited Environmental Testing Laboratory delivering precision results across India.
+        </p>
+        <div style="margin-top:20px;">
+          <div class="nabl-badge" style="display:inline-flex;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>NABL</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#0D9488;margin-bottom:16px;">Services</div>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="services.html" style="color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Ambient Air Testing</a></li>
+          <li><a href="services.html" style="color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Stack Emission Testing</a></li>
+          <li><a href="services.html" style="color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Water Analysis</a></li>
+          <li><a href="services.html" style="color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Noise Testing</a></li>
+          <li><a href="services.html" style="color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Soil &amp; Waste Testing</a></li>
+          <li><a href="services.html" style="color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Consultancy</a></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#0D9488;margin-bottom:16px;">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.6;">Plot No. 2181, Ward No. 4,<br/>Bank Colony Road, Chiraundi,<br/>Morabadi, Ranchi — 834009</div>
+          <a href="tel:+918709566967" style="color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">+91 87095 66967</a>
+          <a href="mailto:esplranchi@gmail.com" style="color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">esplranchi@gmail.com</a>
+          <a href="https://www.instagram.com/esplranchi/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @esplranchi
+          </a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+      <div style="color:rgba(255,255,255,0.3);font-size:13px;">© 2024 Envirostruct Solutions Pvt Ltd. All rights reserved.</div>
+      <div style="color:rgba(255,255,255,0.3);font-size:13px;">Designed by <a href="https://www.instagram.com/shubh_a_m_/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">Shubham Keshri</a></div>
+      <div style="color:rgba(255,255,255,0.3);font-size:13px;">NABL Accredited Lab</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const h1 = document.getElementById('h1');
+  const h2 = document.getElementById('h2');
+  const h3 = document.getElementById('h3');
+  let menuOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    h1.style.transform = menuOpen ? 'translateY(8px) rotate(45deg)' : '';
+    h2.style.opacity  = menuOpen ? '0' : '';
+    h3.style.transform = menuOpen ? 'translateY(-8px) rotate(-45deg)' : '';
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      h1.style.transform = h3.style.transform = '';
+      h2.style.opacity = '';
+    });
+  });
+
+  // Scroll reveal
+  if (new URLSearchParams(window.location.search).has('screenshot')) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+
+  function handleCareerSubmit(e) {
+    e.preventDefault();
+    const name       = document.getElementById('c-name').value.trim();
+    const phone      = document.getElementById('c-phone').value.trim();
+    const email      = document.getElementById('c-email').value.trim();
+    const position   = document.getElementById('c-position').value;
+    const experience = document.getElementById('c-experience').value;
+    const qual       = document.getElementById('c-qual').value.trim();
+    const message    = document.getElementById('c-message').value.trim();
+
+    const text = [
+      '📋 *Job Application — Envirostruct Solutions*',
+      '',
+      `*Name:* ${name}`,
+      `*Phone:* ${phone}`,
+      `*Email:* ${email}`,
+      position   ? `*Position:* ${position}`       : null,
+      experience ? `*Experience:* ${experience}`   : null,
+      qual       ? `*Qualification:* ${qual}`      : null,
+      message    ? `*About Me:* ${message}`        : null,
+      '',
+      '_[Resume will be attached in this chat]_',
+    ].filter(Boolean).join('\n');
+
+    window.open('https://wa.me/918709566967?text=' + encodeURIComponent(text), '_blank');
+    document.getElementById('career-form-wrap').style.display = 'none';
+    document.getElementById('career-success').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

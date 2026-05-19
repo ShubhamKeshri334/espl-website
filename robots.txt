@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# UPDATE the domain below once you have a live URL
+Sitemap: https://www.envirostruct.in/sitemap.xml
