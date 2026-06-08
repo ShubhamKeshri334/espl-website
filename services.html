@@ -149,6 +149,30 @@
     .param-table td { padding: 9px 14px; border-bottom: 1px solid #F0F2F4; color: #444651; }
     .param-table tr:last-child td { border-bottom: none; }
     .param-table tr:hover td { background: #E8EEF5; }
+
+    /* ── Accordion ── */
+    .service-card-header {
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+      border-radius: 8px 8px 0 0;
+    }
+    .service-card-header:hover { background: #F8FAFC; }
+    .service-card.open .service-card-header { background: #F8FAFC; border-radius: 8px 8px 0 0; }
+    .card-collapse-wrap {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .chevron-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 6px;
+      background: #E8EEF5; flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .chevron-btn svg { transition: transform 0.3s ease; }
+    .service-card.open .chevron-btn { background: #EEF2FF; }
+    .service-card.open .chevron-btn svg { transform: rotate(180deg); }
   </style>
 </head>
 <body>
@@ -928,6 +952,36 @@
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Service card accordion ──
+  document.querySelectorAll('.service-card').forEach(card => {
+    const header  = card.querySelector('.service-card-header');
+    const divider = card.querySelector('.service-card-divider');
+    const body    = card.querySelector('.service-card-body');
+
+    // Wrap collapsible content
+    const wrap = document.createElement('div');
+    wrap.className = 'card-collapse-wrap';
+    card.insertBefore(wrap, divider);
+    wrap.appendChild(divider);
+    wrap.appendChild(body);
+
+    // Add chevron button to header's outer flex row
+    const outerRow = header.querySelector('div');
+    const chevron = document.createElement('div');
+    chevron.className = 'chevron-btn';
+    chevron.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
+    outerRow.appendChild(chevron);
+
+    header.addEventListener('click', () => {
+      const isOpen = card.classList.toggle('open');
+      if (isOpen) {
+        wrap.style.maxHeight = wrap.scrollHeight + 'px';
+      } else {
+        wrap.style.maxHeight = '0';
+      }
+    });
+  });
 </script>
 
 </body>
