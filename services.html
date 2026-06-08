@@ -150,29 +150,54 @@
     .param-table tr:last-child td { border-bottom: none; }
     .param-table tr:hover td { background: #E8EEF5; }
 
-    /* ── Accordion ── */
-    .service-card-header {
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.2s;
-      border-radius: 8px 8px 0 0;
+    /* ── Square service cards ── */
+    .sq-card {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      overflow: hidden; cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
     }
-    .service-card-header:hover { background: #F8FAFC; }
-    .service-card.open .service-card-header { background: #F8FAFC; border-radius: 8px 8px 0 0; }
-    .card-collapse-wrap {
-      max-height: 0;
-      overflow: hidden;
+    .sq-card:hover { border-color: #1E3A8A; box-shadow: 0 6px 20px rgba(30,58,138,0.12); transform: translateY(-2px); }
+    .sq-card.open { border-color: #1E3A8A; transform: none; }
+    .sq-card-face {
+      padding: 28px 20px 22px;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 12px; min-height: 210px; justify-content: space-between;
+    }
+    .sq-icon-wrap {
+      width: 56px; height: 56px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .sq-title { font-size: 15px; font-weight: 700; color: #191C1E; letter-spacing: -0.01em; line-height: 1.3; }
+    .sq-desc  { font-size: 12px; color: #757682; line-height: 1.6; margin-top: 4px; }
+    .sq-chevron-btn {
+      width: 28px; height: 28px; border-radius: 6px; background: #E8EEF5;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .sq-chevron-btn svg { transition: transform 0.3s ease; }
+    .sq-card.open .sq-chevron-btn { background: #EEF2FF; }
+    .sq-card.open .sq-chevron-btn svg { transform: rotate(180deg); }
+    .sq-card-detail {
+      max-height: 0; overflow: hidden;
       transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .chevron-btn {
-      display: flex; align-items: center; justify-content: center;
-      width: 32px; height: 32px; border-radius: 6px;
-      background: #E8EEF5; flex-shrink: 0;
-      transition: background 0.2s;
+    .sq-detail-inner { padding: 18px 20px 22px; border-top: 1px solid #E2E8F0; }
+    .sq-detail-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+      text-transform: uppercase; color: #757682; margin-bottom: 10px;
     }
-    .chevron-btn svg { transition: transform 0.3s ease; }
-    .service-card.open .chevron-btn { background: #EEF2FF; }
-    .service-card.open .chevron-btn svg { transform: rotate(180deg); }
+    .sq-detail-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .sq-detail-list li { font-size: 12px; color: #444651; line-height: 1.5; padding-left: 2px; }
+
+    /* ── Section divider ── */
+    .services-section-heading {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+    }
+    .services-section-bar { width: 4px; height: 44px; border-radius: 2px; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -245,559 +270,374 @@
 <section class="py-24" style="background:#E8EEF5;">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Service 1: Ambient Air -->
-    <div id="air" class="service-card mb-8 reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 100-20 10 10 0 000 20z"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
-          </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Ambient Air Quality Testing</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">Comprehensive monitoring of outdoor air quality parameters as per CPCB/MoEF standards. Covering particulate matter, gaseous pollutants, and meteorological parameters for EIA studies, compliance monitoring, and baseline assessments.</p>
-              </div>
-              <div style="flex-shrink:0;">
-                <div class="nabl-badge" style="font-size:11px;padding:4px 12px 4px 8px;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  NABL Accredited
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- ── Section 1: Civil & Infrastructure ── -->
+    <div class="reveal mb-10">
+      <div class="services-section-heading">
+        <div class="services-section-bar" style="background:#1E3A8A;"></div>
+        <div>
+          <div class="section-label" style="margin-bottom:4px;">Infrastructure &amp; Construction</div>
+          <h2 style="font-size:26px;font-weight:700;color:#191C1E;letter-spacing:-0.02em;line-height:1.2;">Civil &amp; Infrastructure Testing</h2>
         </div>
       </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Test Parameters</div>
-            <table class="param-table">
-              <thead><tr><th>Parameter</th><th>Method / Standard</th></tr></thead>
-              <tbody>
-                <tr><td>PM2.5</td><td>IS 5182 Part 23 / USEPA</td></tr>
-                <tr><td>PM10 (RSPM)</td><td>IS 5182 Part 23</td></tr>
-                <tr><td>TSPM / SPM</td><td>Gravimetric method</td></tr>
-                <tr><td>SO₂</td><td>IS 5182 Part 2</td></tr>
-                <tr><td>NOₓ (NO₂)</td><td>IS 5182 Part 6</td></tr>
-                <tr><td>CO</td><td>NDIR / IS 5182 Part 10</td></tr>
-                <tr><td>Ozone (O₃)</td><td>UV photometry</td></tr>
-                <tr><td>NH₃, H₂S</td><td>IS 5182 method</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Applications</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> EIA / EMP baseline studies</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Consent to Operate (CTO) compliance</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Residential / industrial area monitoring</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Construction site dust assessment</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Court order / NGT requirement reports</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <p style="color:#444651;font-size:14px;line-height:1.75;max-width:580px;padding-left:18px;">Testing of construction materials, sub-surface conditions, and structural integrity for buildings, roads, and infrastructure projects across Jharkhand.</p>
     </div>
 
-    <!-- Service 2: Stack Emission -->
-    <div id="stack" class="service-card mb-8 reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#CCFBF1;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+
+      <div id="construction" class="sq-card reveal">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#EEF2FF;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
           </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Stack Emission Testing</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">Comprehensive flue gas analysis from industrial chimneys, boilers, furnaces, and DG sets. Our certified field engineers conduct isokinetic sampling as per IS/USEPA methods, providing legally defensible reports for PCB submissions.</p>
-              </div>
-              <div style="flex-shrink:0;">
-                <div class="nabl-badge" style="font-size:11px;padding:4px 12px 4px 8px;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  NABL Accredited
-                </div>
-              </div>
-            </div>
-          </div>
+          <div><div class="sq-title">Construction Material Testing</div><div class="sq-desc">Quality testing of cement, aggregates, bricks, tiles, and steel as per BIS/IS standards.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Materials Tested</div>
+          <ul class="sq-detail-list">
+            <li>Cement — strength, setting time, consistency</li>
+            <li>Aggregates — gradation, specific gravity, abrasion</li>
+            <li>Concrete — compressive strength, water absorption</li>
+            <li>Bricks &amp; Blocks — strength, water absorption</li>
+            <li>Steel / TMT — tensile, yield, elongation, bend test</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ Quality control at construction sites</li>
+            <li>✓ Government project acceptance testing</li>
+            <li>✓ Pre-tender material compliance checks</li>
+            <li>✓ Third-party quality audits for contractors</li>
+          </ul>
+        </div></div>
       </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Test Parameters</div>
-            <table class="param-table">
-              <thead><tr><th>Parameter</th><th>Method / Standard</th></tr></thead>
-              <tbody>
-                <tr><td>Particulate Matter (PM)</td><td>IS 11255 Part 2 / USEPA Method 5</td></tr>
-                <tr><td>SO₂</td><td>IS 11255 Part 3</td></tr>
-                <tr><td>NOₓ</td><td>IS 11255 Part 5</td></tr>
-                <tr><td>CO</td><td>Orsat / NDIR</td></tr>
-                <tr><td>HCl, HF</td><td>IS 11255 Part 8</td></tr>
-                <tr><td>Heavy Metals (Hg, Pb, Cd)</td><td>USEPA Method 29</td></tr>
-                <tr><td>Flue gas velocity / flow</td><td>Pitot tube / USEPA Method 1</td></tr>
-                <tr><td>Temperature, O₂, CO₂</td><td>In-situ instruments</td></tr>
-              </tbody>
-            </table>
+
+      <div id="concrete" class="sq-card reveal" style="transition-delay:0.08s;">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#CCFBF1;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Industries Served</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Cement, steel &amp; power plants</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Mining &amp; mineral processing</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Boilers &amp; incinerators</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> DG sets (&gt; 800 kVA)</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Chemical &amp; pharmaceutical units</li>
-            </ul>
-          </div>
+          <div><div class="sq-title">Concrete Mix Design</div><div class="sq-desc">IS 10262 based mix design for M20 to M60 grade concrete with specified workability requirements.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Design Parameters</div>
+          <ul class="sq-detail-list">
+            <li>Target mean compressive strength</li>
+            <li>Water-cement ratio determination</li>
+            <li>Aggregate proportioning</li>
+            <li>Workability — slump / flow</li>
+            <li>Trial mix &amp; 7-day / 28-day strength</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ RCC structures, bridges &amp; foundations</li>
+            <li>✓ Pavement quality concrete (PQC)</li>
+            <li>✓ M20 to M60 — pump &amp; normal concrete</li>
+            <li>✓ Pre-production mix approval</li>
+          </ul>
+        </div></div>
       </div>
+
+      <div id="bituminous" class="sq-card reveal" style="transition-delay:0.16s;">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#EEF2FF;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="20" height="6" rx="1"/><rect x="2" y="4" width="20" height="6" rx="1"/><line x1="6" y1="20" x2="6" y2="24"/><line x1="18" y1="20" x2="18" y2="24"/></svg>
+          </div>
+          <div><div class="sq-title">Bituminous Mix Design</div><div class="sq-desc">Marshall method mix design for BC, DBM, and other bituminous layers as per MORTH/NHAI specs.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Marshall Method Parameters</div>
+          <ul class="sq-detail-list">
+            <li>Optimum Bitumen Content (OBC)</li>
+            <li>Marshall stability &amp; flow value</li>
+            <li>Air voids (%)</li>
+            <li>Voids in Mineral Aggregate (VMA)</li>
+            <li>Voids Filled with Bitumen (VFB)</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ National &amp; state highway construction</li>
+            <li>✓ NHAI / MORTH specification compliance</li>
+            <li>✓ Bituminous overlay design</li>
+            <li>✓ Contractor pre-production QC</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div id="geotech" class="sq-card reveal">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#CCFBF1;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          </div>
+          <div><div class="sq-title">Geotechnical Investigation</div><div class="sq-desc">Sub-surface investigation and soil testing for foundation design, slope stability, and site suitability.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Tests (IS 2720 Series)</div>
+          <ul class="sq-detail-list">
+            <li>Grain size analysis</li>
+            <li>Atterberg limits — LL, PL, shrinkage</li>
+            <li>Proctor compaction (Light &amp; Heavy)</li>
+            <li>California Bearing Ratio (CBR)</li>
+            <li>Unconfined compressive strength</li>
+            <li>Direct shear / Triaxial shear</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ Building &amp; bridge foundation design</li>
+            <li>✓ Road sub-grade assessment</li>
+            <li>✓ Mining slope stability studies</li>
+            <li>✓ Site suitability for regulatory approvals</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div id="ndt" class="sq-card reveal" style="transition-delay:0.08s;">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#EEF2FF;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div><div class="sq-title">Non-Destructive Testing (NDT)</div><div class="sq-desc">In-situ structural assessment without damaging the structure — for buildings, bridges, and infrastructure.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">NDT Methods</div>
+          <ul class="sq-detail-list">
+            <li>Rebound Hammer — surface hardness &amp; strength</li>
+            <li>Ultrasonic Pulse Velocity (UPV) — crack detection</li>
+            <li>Core Cutting &amp; Testing — in-situ strength</li>
+            <li>Rebar Locator / Cover Meter</li>
+            <li>Carbonation Depth Test</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ Building structural health assessment</li>
+            <li>✓ Bridge &amp; flyover condition surveys</li>
+            <li>✓ Pre-demolition / renovation audits</li>
+            <li>✓ Insurance &amp; litigation support reports</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div id="pavement" class="sq-card reveal" style="transition-delay:0.16s;">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#CCFBF1;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/><line x1="6" y1="20" x2="6" y2="17"/><line x1="12" y1="20" x2="12" y2="17"/><line x1="18" y1="20" x2="18" y2="17"/></svg>
+          </div>
+          <div><div class="sq-title">Pavement / Structure Evaluation &amp; Design</div><div class="sq-desc">Condition assessment and structural design for roads, highways, and infrastructure projects.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Evaluation Methods</div>
+          <ul class="sq-detail-list">
+            <li>Pavement Condition Index (PCI) — ASTM D6433</li>
+            <li>Benkelman Beam Deflection — IRC 81</li>
+            <li>Rutting &amp; Cracking Survey</li>
+            <li>Skid Resistance (BPN) — ASTM E303</li>
+            <li>Layer Thickness (GPR / coring)</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ Road rehabilitation &amp; maintenance planning</li>
+            <li>✓ NHAI / PWD quality compliance</li>
+            <li>✓ Highway overlay design</li>
+            <li>✓ Urban road condition surveys</li>
+          </ul>
+        </div></div>
+      </div>
+
     </div>
 
-    <!-- Service 3: Water -->
-    <div id="water" class="service-card mb-8 reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
-          </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Water &amp; Wastewater Analysis</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">Complete physicochemical and microbiological analysis of drinking water, groundwater, surface water, industrial effluents, and sewage. Reports conform to IS 10500, BIS, and MoEF discharge standards.</p>
-              </div>
-              <div style="flex-shrink:0;">
-                <div class="nabl-badge" style="font-size:11px;padding:4px 12px 4px 8px;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  NABL Accredited
-                </div>
-              </div>
-            </div>
-          </div>
+    <!-- ── Section 2: Environmental Testing ── -->
+    <div class="reveal mb-10">
+      <div class="services-section-heading">
+        <div class="services-section-bar" style="background:#0D9488;"></div>
+        <div>
+          <div class="section-label" style="margin-bottom:4px;">Environment &amp; Industry</div>
+          <h2 style="font-size:26px;font-weight:700;color:#191C1E;letter-spacing:-0.02em;line-height:1.2;">Environmental Testing</h2>
         </div>
       </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Key Parameters</div>
-            <table class="param-table">
-              <thead><tr><th>Parameter Group</th><th>Examples</th></tr></thead>
-              <tbody>
-                <tr><td>Physical</td><td>pH, TDS, turbidity, colour, TSS</td></tr>
-                <tr><td>Organic</td><td>BOD, COD, TOC, oil &amp; grease</td></tr>
-                <tr><td>Inorganic Ions</td><td>Cl⁻, SO₄²⁻, NO₃⁻, F⁻, PO₄³⁻</td></tr>
-                <tr><td>Heavy Metals</td><td>Pb, Cd, Cr, As, Hg, Ni, Cu, Zn</td></tr>
-                <tr><td>Microbiological</td><td>Total coliform, E. coli, MPN</td></tr>
-                <tr><td>Others</td><td>Hardness, alkalinity, DO, phenols</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Sample Types</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Drinking water (tap, borewell, tanker)</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> River, lake &amp; groundwater</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Industrial effluents &amp; STP/ETP outlet</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Swimming pools &amp; cooling towers</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Food processing water</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <p style="color:#444651;font-size:14px;line-height:1.75;max-width:580px;padding-left:18px;">NABL accredited environmental monitoring, industrial testing, and compliance services across air, water, soil, noise, and energy sectors.</p>
     </div>
 
-    <!-- Service 4: Noise -->
-    <div id="noise" class="service-card mb-8 reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#CCFBF1;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
-          </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Noise &amp; Vibration Testing</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">Occupational noise exposure assessments, ambient noise mapping, and vibration dosimetry conducted per IS 3483, IS 9779, OSHA 29 CFR 1910.95 and CPCB ambient noise standards.</p>
-              </div>
-              <div style="flex-shrink:0;">
-                <div class="nabl-badge" style="font-size:11px;padding:4px 12px 4px 8px;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  NABL Accredited
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Measurements</div>
-            <table class="param-table">
-              <thead><tr><th>Parameter</th><th>Standard</th></tr></thead>
-              <tbody>
-                <tr><td>Laeq (ambient noise level)</td><td>CPCB / IS 3483</td></tr>
-                <tr><td>Leq (occupational TWA)</td><td>OSHA / IS 9779</td></tr>
-                <tr><td>Noise dose (%)</td><td>OSHA 29 CFR 1910.95</td></tr>
-                <tr><td>Peak sound pressure</td><td>ISO 9612</td></tr>
-                <tr><td>Whole-body vibration</td><td>ISO 2631-1</td></tr>
-                <tr><td>Hand-arm vibration</td><td>ISO 5349-1</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Use Cases</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Occupational health compliance (OSHA)</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> EIA noise impact assessment</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Construction site noise monitoring</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Neighbourhood / residential complaints</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Airport &amp; infrastructure projects</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-    <!-- Service 5: Soil -->
-    <div id="soil" class="service-card mb-8 reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v6a2 2 0 002 2 2 2 0 002-2V2"/><path d="M8.5 2h7"/><path d="M14 10c0 3.31-2.69 6-6 6S2 13.31 2 10"/><path d="M22 22H2"/><path d="M8 22v-4"/><path d="M16 22v-2"/></svg>
+      <div id="air" class="sq-card reveal">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#CCFBF1;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3H2"/><path d="M14 17c0 1.7 1.3 3 3 3s3-1.3 3-3-1.3-3-3-3H2"/></svg>
           </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Soil &amp; Solid Waste Testing</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">Characterisation of soils, sediments, sludge, and hazardous solid wastes for regulatory compliance, site remediation, and agricultural suitability. Includes TCLP leachate testing for hazardous waste classification.</p>
-              </div>
-              <div style="flex-shrink:0;">
-                <div class="nabl-badge" style="font-size:11px;padding:4px 12px 4px 8px;">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  NABL Accredited
-                </div>
-              </div>
-            </div>
-          </div>
+          <div><div class="sq-title">Ambient Air Quality</div><div class="sq-desc">CPCB/MoEF compliant monitoring of outdoor air pollutants for EIA, compliance, and baseline studies.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Parameters Tested</div>
+          <ul class="sq-detail-list">
+            <li>PM2.5 &amp; PM10 — IS 5182 Part 23</li>
+            <li>SO₂, NOₓ, CO — IS 5182 methods</li>
+            <li>NH₃, H₂S, Ozone (O₃)</li>
+            <li>Meteorological parameters</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ EIA/EMP baseline studies</li>
+            <li>✓ Consent to Operate compliance</li>
+            <li>✓ Court order / NGT reports</li>
+          </ul>
+        </div></div>
       </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Parameters</div>
-            <table class="param-table">
-              <thead><tr><th>Group</th><th>Parameters</th></tr></thead>
-              <tbody>
-                <tr><td>Physical</td><td>Texture, bulk density, moisture, pH</td></tr>
-                <tr><td>Chemical</td><td>OC, N, P, K, EC, CEC</td></tr>
-                <tr><td>Heavy Metals</td><td>Pb, Cd, Cr, As, Hg, Cu, Zn, Ni</td></tr>
-                <tr><td>TCLP Leachate</td><td>USEPA TCLP 1311 — 8 metals</td></tr>
-                <tr><td>Organic Contaminants</td><td>TPH, PAH, pesticides</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Applications</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Contaminated land assessment</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Hazardous waste classification</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Agricultural soil fertility testing</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Mining area remediation studies</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Sludge disposal compliance</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Service 6: Consultancy -->
-    <div id="consultancy" class="service-card mb-8 reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#CCFBF1;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      <div id="stack" class="sq-card reveal">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#CCFBF1;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22V10"/><path d="M9 22V6"/><path d="M13 22V10"/><path d="M17 22V6"/><line x1="2" y1="22" x2="22" y2="22"/></svg>
           </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Environmental Consultancy</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">End-to-end environmental compliance and consulting services — from project inception to regulatory approval. Our experts guide you through EIA preparation, consent applications, audits, and ongoing monitoring obligations.</p>
-              </div>
-            </div>
-          </div>
+          <div><div class="sq-title">Stack Emission Testing</div><div class="sq-desc">Isokinetic flue gas sampling from chimneys, boilers, and DG sets for PCB submissions.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Parameters</div>
+          <ul class="sq-detail-list">
+            <li>Particulate matter — IS 11255 Part 2</li>
+            <li>SO₂, NOₓ, CO, HCl, HF</li>
+            <li>Heavy metals (Hg, Pb, Cd) — USEPA 29</li>
+            <li>Flue gas velocity &amp; temperature</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ Cement, steel &amp; power plants</li>
+            <li>✓ Consent to Operate renewals</li>
+            <li>✓ DG sets &gt;800 kVA compliance</li>
+          </ul>
+        </div></div>
       </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Services Offered</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Environmental Impact Assessment (EIA)</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Environmental Management Plan (EMP)</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Consent to Establish (CTE) applications</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Consent to Operate (CTO) renewals</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Environmental compliance audits</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Annual environmental statements</li>
-            </ul>
-          </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Regulatory Coverage</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> JSPCB (Jharkhand State Pollution Control Board)</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> CPCB national standards</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> MoEF &amp; Environment Protection Act</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> NGT compliance reporting</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Service 7: Construction Material Testing -->
-    <div id="construction" class="service-card mb-8 reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      <div id="water" class="sq-card reveal">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#CCFBF1;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
           </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Construction Material Testing</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">Quality testing of construction materials including cement, concrete, aggregates, bricks, and steel as per BIS/IS standards — ensuring your materials meet project specifications before work begins.</p>
-              </div>
-            </div>
-          </div>
+          <div><div class="sq-title">Water &amp; Wastewater Analysis</div><div class="sq-desc">Drinking water, borehole, effluent, and STP/ETP outlet testing per BIS/CPCB standards.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Parameter Groups</div>
+          <ul class="sq-detail-list">
+            <li>Physical — pH, TDS, turbidity, TSS</li>
+            <li>Organic — BOD, COD, TOC</li>
+            <li>Heavy metals — Pb, Cd, Cr, As, Hg</li>
+            <li>Microbiological — coliform, E. coli</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ Potability reports (IS 10500)</li>
+            <li>✓ Effluent discharge compliance</li>
+            <li>✓ River &amp; groundwater monitoring</li>
+          </ul>
+        </div></div>
       </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Materials Tested</div>
-            <table class="param-table">
-              <thead><tr><th>Material</th><th>Tests</th></tr></thead>
-              <tbody>
-                <tr><td>Cement</td><td>Compressive strength, consistency, setting time</td></tr>
-                <tr><td>Concrete (Fresh &amp; Hardened)</td><td>Slump, compressive strength, water absorption</td></tr>
-                <tr><td>Aggregates</td><td>Sieve analysis, specific gravity, abrasion value</td></tr>
-                <tr><td>Bricks &amp; Blocks</td><td>Compressive strength, water absorption, efflorescence</td></tr>
-                <tr><td>Steel / TMT Bars</td><td>Tensile strength, yield strength, elongation, bend test</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Also Covers</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Concrete Mix Design (IS 10262)</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Bituminous Mix Design (Marshall method)</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Quality control for government / NHAI projects</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Pre-tender material acceptance testing</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Third-party quality audit for contractors</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Service 8: Geotechnical Investigation -->
-    <div id="geotech" class="service-card mb-8 reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#CCFBF1;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      <div id="noise" class="sq-card reveal">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#EEF2FF;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
           </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Geotechnical Investigation</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">Sub-surface investigation and soil testing to support foundation design, slope stability, and construction suitability assessment. Field borings, SPT, and laboratory testing all under one roof.</p>
-              </div>
-            </div>
-          </div>
+          <div><div class="sq-title">Noise &amp; Vibration Testing</div><div class="sq-desc">Ambient noise mapping and occupational vibration dosimetry per IS/CPCB/OSHA standards.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Measurements</div>
+          <ul class="sq-detail-list">
+            <li>Laeq ambient noise — CPCB / IS 3483</li>
+            <li>Leq occupational TWA — OSHA</li>
+            <li>Whole-body &amp; hand-arm vibration</li>
+            <li>Peak sound pressure level</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ EIA noise impact assessment</li>
+            <li>✓ Occupational health compliance</li>
+            <li>✓ Construction site monitoring</li>
+          </ul>
+        </div></div>
       </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Tests Conducted</div>
-            <table class="param-table">
-              <thead><tr><th>Test</th><th>Standard</th></tr></thead>
-              <tbody>
-                <tr><td>Grain size analysis</td><td>IS 2720 Part 4</td></tr>
-                <tr><td>Atterberg limits (LL, PL)</td><td>IS 2720 Part 5 &amp; 6</td></tr>
-                <tr><td>Proctor compaction</td><td>IS 2720 Part 7 &amp; 8</td></tr>
-                <tr><td>CBR (California Bearing Ratio)</td><td>IS 2720 Part 16</td></tr>
-                <tr><td>Unconfined compressive strength</td><td>IS 2720 Part 10</td></tr>
-                <tr><td>Direct shear / Triaxial</td><td>IS 2720 Part 13</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Applications</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Building &amp; bridge foundation design</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Road sub-grade &amp; sub-base assessment</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Embankment &amp; dam design</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Mining area slope stability</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Site suitability reports for approvals</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Service 9: NDT -->
-    <div id="ndt" class="service-card mb-8 reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <div id="soil" class="sq-card reveal">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#CCFBF1;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Non-Destructive Testing (NDT)</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">In-situ assessment of structural integrity without damaging the structure. Ideal for existing infrastructure health checks, quality control during construction, and pre-renovation structural audits.</p>
-              </div>
-            </div>
-          </div>
+          <div><div class="sq-title">Soil &amp; Solid Waste Testing</div><div class="sq-desc">Soil characterisation and solid waste analysis for contamination, SWM compliance, and agricultural suitability.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Parameters</div>
+          <ul class="sq-detail-list">
+            <li>pH, EC, OC, N, P, K — fertility profile</li>
+            <li>Heavy metals — Pb, Cd, Cr, As, Hg</li>
+            <li>TCLP leachate — USEPA Method 1311</li>
+            <li>TPH, PAH, organic contaminants</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ Contaminated site assessment</li>
+            <li>✓ Hazardous waste classification</li>
+            <li>✓ Agricultural soil fertility testing</li>
+          </ul>
+        </div></div>
       </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">NDT Methods</div>
-            <table class="param-table">
-              <thead><tr><th>Method</th><th>Purpose</th></tr></thead>
-              <tbody>
-                <tr><td>Rebound Hammer</td><td>Concrete surface hardness &amp; strength estimation</td></tr>
-                <tr><td>Ultrasonic Pulse Velocity (UPV)</td><td>Internal crack detection, concrete quality</td></tr>
-                <tr><td>Core Cutting &amp; Testing</td><td>In-situ compressive strength verification</td></tr>
-                <tr><td>Rebar Locator / Cover Meter</td><td>Rebar position &amp; concrete cover measurement</td></tr>
-                <tr><td>Carbonation Depth Test</td><td>Durability &amp; corrosion risk assessment</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Applications</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Structural health assessment of buildings</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Bridge &amp; flyover condition surveys</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Pre-demolition / renovation assessments</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Quality dispute resolution on site</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Insurance &amp; litigation support reports</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Service 10: Pavement / Structure Evaluation -->
-    <div id="pavement" class="service-card mb-8 reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#CCFBF1;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/><line x1="6" y1="20" x2="6" y2="17"/><line x1="12" y1="20" x2="12" y2="17"/><line x1="18" y1="20" x2="18" y2="17"/></svg>
+      <div id="coal" class="sq-card reveal">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#EEF2FF;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Pavement / Structure Evaluation &amp; Design</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">Comprehensive pavement condition assessment, structural evaluation, and mix design services for roads, highways, and infrastructure projects — serving NHAI, PWD, and private developers.</p>
-              </div>
-            </div>
-          </div>
+          <div><div class="sq-title">Coal Testing Services</div><div class="sq-desc">Proximate analysis, calorific value, and statutory testing for Jharkhand’s mining and energy sector.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Test Parameters</div>
+          <ul class="sq-detail-list">
+            <li>Moisture, Ash, Volatile Matter — IS 1350-1</li>
+            <li>Gross Calorific Value — IS 1350 Part 2</li>
+            <li>Total Sulphur — IS 1350 Part 3</li>
+            <li>Hardgrove Grindability Index — IS 9867</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Applications</div>
+          <ul class="sq-detail-list">
+            <li>✓ Power plant fuel quality control</li>
+            <li>✓ Coal grade verification &amp; procurement</li>
+            <li>✓ Mining statutory compliance</li>
+          </ul>
+        </div></div>
       </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Evaluation Services</div>
-            <table class="param-table">
-              <thead><tr><th>Test / Survey</th><th>Standard</th></tr></thead>
-              <tbody>
-                <tr><td>Pavement Condition Index (PCI)</td><td>ASTM D6433</td></tr>
-                <tr><td>Benkelman Beam Deflection</td><td>IRC 81</td></tr>
-                <tr><td>Rutting &amp; Cracking Survey</td><td>IRC / visual distress</td></tr>
-                <tr><td>Skid Resistance (BPN)</td><td>ASTM E303</td></tr>
-                <tr><td>Layer Thickness (GPR / coring)</td><td>Field &amp; lab</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Applications</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Road rehabilitation &amp; maintenance planning</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> NHAI / PWD quality compliance</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> New highway design &amp; overlay design</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Urban road condition surveys</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Pre &amp; post construction quality audits</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Service 11: Coal Testing -->
-    <div id="coal" class="service-card reveal">
-      <div class="service-card-header">
-        <div style="display:flex;align-items:flex-start;gap:20px;">
-          <div style="width:52px;height:52px;border-radius:8px;background:#EEF2FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <div id="consultancy" class="sq-card reveal">
+        <div class="sq-card-face">
+          <div class="sq-icon-wrap" style="background:#CCFBF1;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
-          <div style="flex:1;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;">
-              <div>
-                <h2 style="font-size:20px;font-weight:700;color:#191C1E;letter-spacing:-0.01em;margin-bottom:6px;">Coal Testing Services</h2>
-                <p style="color:#757682;font-size:14px;line-height:1.7;max-width:640px;">Proximate and ultimate analysis of coal samples for quality grading, calorific value assessment, and compliance with power plant and statutory specifications — critical for Jharkhand's mining and energy sector.</p>
-              </div>
-            </div>
-          </div>
+          <div><div class="sq-title">Environmental Consultancy</div><div class="sq-desc">End-to-end EIA, CTO/CTE applications, compliance audits, and regulatory support for industries.</div></div>
+          <div class="sq-chevron-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
+        <div class="sq-card-detail"><div class="sq-detail-inner">
+          <div class="sq-detail-label">Services Offered</div>
+          <ul class="sq-detail-list">
+            <li>Environmental Impact Assessment (EIA)</li>
+            <li>Environmental Management Plan (EMP)</li>
+            <li>Consent to Establish / Operate (CTE/CTO)</li>
+            <li>Annual environmental statements</li>
+          </ul>
+          <div class="sq-detail-label" style="margin-top:14px;">Regulatory Coverage</div>
+          <ul class="sq-detail-list">
+            <li>✓ JSPCB &amp; CPCB standards</li>
+            <li>✓ MoEF &amp; Environment Protection Act</li>
+            <li>✓ NGT compliance reporting</li>
+          </ul>
+        </div></div>
       </div>
-      <div class="service-card-divider"></div>
-      <div class="service-card-body">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Test Parameters</div>
-            <table class="param-table">
-              <thead><tr><th>Parameter</th><th>Method</th></tr></thead>
-              <tbody>
-                <tr><td>Moisture Content</td><td>IS 1350 Part 1</td></tr>
-                <tr><td>Ash Content</td><td>IS 1350 Part 1</td></tr>
-                <tr><td>Volatile Matter</td><td>IS 1350 Part 1</td></tr>
-                <tr><td>Fixed Carbon</td><td>By calculation</td></tr>
-                <tr><td>Gross Calorific Value (GCV)</td><td>IS 1350 Part 2</td></tr>
-                <tr><td>Total Sulphur</td><td>IS 1350 Part 3</td></tr>
-                <tr><td>Hardgrove Grindability Index (HGI)</td><td>IS 9867</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div>
-            <div style="font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:#757682;margin-bottom:12px;">Applications</div>
-            <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Power plant fuel quality control</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Coal procurement &amp; grade verification</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Mining company statutory compliance</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Export / import quality certification</li>
-              <li style="display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#444651;"><span style="color:#0D9488;font-weight:700;flex-shrink:0;">✓</span> Coal washery feed &amp; product assessment</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+
     </div>
 
   </div>
@@ -953,35 +793,26 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── Service card accordion ──
-  document.querySelectorAll('.service-card').forEach(card => {
-    const header  = card.querySelector('.service-card-header');
-    const divider = card.querySelector('.service-card-divider');
-    const body    = card.querySelector('.service-card-body');
-
-    // Wrap collapsible content
-    const wrap = document.createElement('div');
-    wrap.className = 'card-collapse-wrap';
-    card.insertBefore(wrap, divider);
-    wrap.appendChild(divider);
-    wrap.appendChild(body);
-
-    // Add chevron button to header's outer flex row
-    const outerRow = header.querySelector('div');
-    const chevron = document.createElement('div');
-    chevron.className = 'chevron-btn';
-    chevron.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
-    outerRow.appendChild(chevron);
-
-    header.addEventListener('click', () => {
+  // ── Square card accordion ──
+  document.querySelectorAll('.sq-card').forEach(card => {
+    const face   = card.querySelector('.sq-card-face');
+    const detail = card.querySelector('.sq-card-detail');
+    face.addEventListener('click', () => {
       const isOpen = card.classList.toggle('open');
-      if (isOpen) {
-        wrap.style.maxHeight = wrap.scrollHeight + 'px';
-      } else {
-        wrap.style.maxHeight = '0';
-      }
+      detail.style.maxHeight = isOpen ? detail.scrollHeight + 'px' : '0';
     });
   });
+
+  // Open card if navigated to via hash
+  const hash = window.location.hash.slice(1);
+  if (hash) {
+    const target = document.getElementById(hash);
+    if (target && target.classList.contains('sq-card')) {
+      const detail = target.querySelector('.sq-card-detail');
+      target.classList.add('open');
+      detail.style.maxHeight = detail.scrollHeight + 'px';
+    }
+  }
 </script>
 
 </body>
