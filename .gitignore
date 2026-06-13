@@ -16,6 +16,3 @@ Claude.md
 # Facebook downloaded HTML dumps (not needed for the site)
 Espl Images/*.html
 Espl Images/*_files/
-# Keep the founders photo used in about.html
-!Espl Images/FoundersTogether_files/
-!Espl Images/FoundersTogether_files/588024519_18499310590077899_4941116084554700315_n.jpg
