@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Envirostruct Solutions Pvt Ltd" />
   <meta property="og:title" content="Envirostruct Solutions — Environmental, Civil &amp; Industrial Testing Lab, Ranchi" />
   <meta property="og:description" content="NABL accredited environmental testing lab in Ranchi, Jharkhand. Water, air, soil, noise & stack emission testing with fast turnaround and field sampling." />
-  <meta property="og:image" content="https://www.envirostruct.in/Espl Images/Hero image.png" />
+  <meta property="og:image" content="https://www.envirostruct.in/Espl Images/Hero-image.webp" />
   <meta property="og:url" content="https://www.envirostruct.in/" />
   <meta property="og:site_name" content="Envirostruct Solutions Pvt Ltd" />
 
@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Envirostruct Solutions — Environmental, Civil &amp; Industrial Testing Lab, Ranchi" />
   <meta name="twitter:description" content="NABL accredited environmental testing lab in Ranchi, Jharkhand. Fast reports. Call +91 87095 66967." />
-  <meta name="twitter:image" content="https://www.envirostruct.in/Espl Images/Hero image.png" />
+  <meta name="twitter:image" content="https://www.envirostruct.in/Espl Images/Hero-image.webp" />
 
   <!-- ── JSON-LD Structured Data (most important for Google local ranking) ── -->
   <script type="application/ld+json">
@@ -110,7 +110,6 @@
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -177,7 +176,7 @@
     .hero-bg {
       background-image:
         linear-gradient(to bottom, rgba(4,8,20,0.78) 0%, rgba(4,8,20,0.60) 55%, rgba(4,8,20,0.85) 100%),
-        url('Espl Images/Hero image.png');
+        url('Espl Images/Hero-image.webp');
       background-size: cover;
       background-position: center center;
     }
@@ -1151,38 +1150,33 @@
   }
 
   // Sparkles
-  tsParticles.load("hero-sparkles", {
-    background: { color: { value: "transparent" } },
-    fullScreen: { enable: false },
-    fpsLimit: 60,
-    particles: {
-      number: {
-        value: 90,
-        density: { enable: true, width: 800, height: 800 }
-      },
-      color: { value: "#ffffff" },
-      shape: { type: "circle" },
-      opacity: {
-        value: { min: 0.08, max: 0.75 },
-        animation: { enable: true, speed: 1.2, sync: false, startValue: "random" }
-      },
-      size: {
-        value: { min: 0.8, max: 2.5 }
-      },
-      move: {
-        enable: true,
-        speed: { min: 0.08, max: 0.5 },
-        direction: "none",
-        random: true,
-        straight: false,
-        outModes: { default: "out" }
-      }
-    },
-    detectRetina: true
-  }).then(() => {
-    const el = document.getElementById('hero-sparkles');
-    if (el) el.style.opacity = '1';
-  });
+  (function(){
+    const c = document.getElementById('hero-sparkles');
+    if (!c) return;
+    const style = document.createElement('style');
+    style.textContent = '@keyframes sp{0%{opacity:var(--a);transform:translate(0,0)}100%{opacity:var(--b);transform:translate(var(--x),var(--y))}}';
+    document.head.appendChild(style);
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < 80; i++) {
+      const d = document.createElement('div');
+      const sz = (0.8 + Math.random() * 1.7).toFixed(1);
+      d.style.cssText = [
+        'position:absolute',
+        `left:${(Math.random()*100).toFixed(1)}%`,
+        `top:${(Math.random()*100).toFixed(1)}%`,
+        `width:${sz}px`,`height:${sz}px`,
+        'border-radius:50%','background:#fff',
+        `--a:${(0.05+Math.random()*0.15).toFixed(2)}`,
+        `--b:${(0.3+Math.random()*0.5).toFixed(2)}`,
+        `--x:${(-10+Math.random()*20).toFixed(0)}px`,
+        `--y:${(-10+Math.random()*20).toFixed(0)}px`,
+        `animation:sp ${(7+Math.random()*13).toFixed(1)}s ${(-Math.random()*13).toFixed(1)}s infinite alternate ease-in-out`
+      ].join(';');
+      frag.appendChild(d);
+    }
+    c.appendChild(frag);
+    c.style.opacity = '1';
+  })();
 </script>
 
 </body>
